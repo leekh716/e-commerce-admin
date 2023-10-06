@@ -41,7 +41,8 @@ export const StoreModal = () => {
 
       const response = await axios.post("/api/stores", values);
 
-      toast.success("Store created");
+      /** db에 생성되기까지 시간이 걸릴수 있어서 확실히 refresh 하기 위함 */
+      window.location.assign(`/${response.data.id}`);
     } catch (error) {
       toast.error("Something went wrong");
     } finally {
